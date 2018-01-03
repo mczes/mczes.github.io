@@ -1,0 +1,13 @@
+## Titanic Survivors by Passenger Class
+Created on: January 3rd 2018
+```{r, echo=FALSE, message=FALSE}
+library(plotly)
+dataFrame <- read.csv("Titanic.csv", header = TRUE)  # read csv file 
+
+survivedclass <- subset(dataFrame, Survived==1)
+deadclass <-subset(dataFrame, Survived==0)
+plot_ly(dataFrame, x = ~survivedclass$PClass , type="histogram", name = 'Survived') %>%
+  add_trace(x = ~deadclass$PClass, name = 'Died') %>%
+  layout(xaxis = list(title = 'Passenger Class'), yaxis = list(title = 'Count'), barmode = 'group')
+#plot_ly(dataFrame, x = ~PClass , type="histogram")
+```
