@@ -1,5 +1,12 @@
+---
+title: "Titanic Survivors by Passenger Class"
+date: "January 3rd 2018"
+output: ioslides_presentation
+---
+
 ## Titanic Survivors by Passenger Class
-Created on: January 3rd 2018
+Created on January 3rd 2018
+
 ```{r, echo=FALSE, message=FALSE}
 library(plotly)
 dataFrame <- read.csv("Titanic.csv", header = TRUE)  # read csv file 
