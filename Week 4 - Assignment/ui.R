@@ -12,7 +12,7 @@ shinyUI(fluidPage(
     sidebarPanel(
        selectInput("year", "Year:", 
                    eqDataSet$Year),
-       selectInput("yearCompare", "Select to compare:", 
+       selectInput("yearCompare", "Select year to compare:", 
                    eqDataSet$Year),
        hr(),
        helpText("Data from www.govdata.de.")
