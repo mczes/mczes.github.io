@@ -1,0 +1,27 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE )
+```
+
+## Airports in Germany
+### Created on: 2017-12-28
+
+```{r, echo=FALSE} 
+library(leaflet)
+
+# Import Airport Data
+df <- read.csv("Airports_Germany.csv", header = TRUE)  # read csv file 
+
+airport_names <- df[,c("airport")]
+
+# Create Icon
+airport_icon <- makeIcon(
+  iconUrl = "airport.png"
+)
+
+#Create Leaflet
+df %>%
+  leaflet(options = leafletOptions(minZoom = 0, maxZoom = 10)) %>%
+  addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>% # enabling loading of tiles in  html document only
+  setView(lng = 8.570773, lat = 50.050735, zoom = 3) %>% 
+  addMarkers(clusterOptions = markerClusterOptions(icon = airport_icon), popup = airport_names)
+```
