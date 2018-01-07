@@ -20,7 +20,8 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-       plotOutput("comparePlot")
+       plotOutput("comparePlot"),
+       includeHTML("include.html")
     )
   )
 ))
