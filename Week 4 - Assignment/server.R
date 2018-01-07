@@ -1,28 +1,32 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-  
 eqDataSet <- read.csv("qualification_employment.csv", header=TRUE, sep=";")
-   
-  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-  })
   
+  output$comparePlot <- renderPlot({
+    SelectedYear <- input$year
+    SelectedYearCompare <- input$yearCompare
+    
+    yearData <- subset(eqDataSet, Year==SelectedYear)
+    yearDataCompare <- subset(eqDataSet, Year==SelectedYearCompare)
+    
+    avector <- as.vector(yearData, mode='numeric')
+    avector <- avector[-1]
+    
+    compareVector <- as.vector(yearDataCompare, mode='numeric')
+    compareVector <- compareVector[-1]
+    compareMatrix <- matrix(c(avector,compareVector), nrow = 2, ncol = 3, byrow = TRUE)
+    plotLegend = c(SelectedYear,SelectedYearCompare)
+    
+    barplot(compareMatrix, 
+            main="",
+            ylab="Employment in Thousands",
+            xlab = "Degree of Qualification", 
+            ylim=c(0,30000),
+            beside = TRUE,
+            col=colors()[c(15,80)],
+            legend = plotLegend,
+            names.arg=c("Vocational Training", "University Degree", "Without Vocational Training")
+    )
+  })
 })
