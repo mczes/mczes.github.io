@@ -11,16 +11,22 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 --- 
 
+<style>
+.title-slide {
+  background-color: #fff;
+}
+</style>
+
 ## Overview
 
 This Slidify presentation was built as peer-graded assignment for the Coursera & John Hopkins University course 
 Developing Data Products.
 
-The Shiny application developed for the fist part of the assignment is available at:
-https://mczes.shinyapps.io/week_4_-_assignment/
+* The Shiny application developed for the fist part of the assignment is available at:
+* https://mczes.shinyapps.io/week_4_-_assignment/
 
-Source code for ui.R and server.R files are available on my Github repository: 
-https://github.com/mczes/mczes.github.io/tree/master/Week%204%20-%20Assignment
+* Source code for ui.R and server.R files are available on my Github repository: 
+* https://github.com/mczes/mczes.github.io/tree/master/Week%204%20-%20Assignment
 
 --- .class #backgroundStart
 
